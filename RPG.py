@@ -45,7 +45,7 @@ Viewing = []
 
 # Weapon List
 WeaponList = [
-    # Class Name, Nice Name, Price, Ammo
+   # Class Name                 Nice Name            Price  Ammo
     
     ("weapon_knife",            "Hunting Knife",     250,   1  ),
     ("weapon_knife_throwing",   "Throwing Knife",    200,   10 ),
@@ -66,7 +66,7 @@ WeaponList = [
     ("weapon_cmag",             "Cougar Magnum",     2000,  36 ),
     ("weapon_golden_gun",       "Golden Gun",        10000, 10 ),
     ("weapon_silver_pp7",       "Silver PP7",        5000,  100),
-    ("weapon_golden_pp7",         "Gold PP7",        50000, 100),
+    ("weapon_golden_pp7",       "Gold PP7",          50000, 100),
     ("weapon_moonraker",        "Moonraker Laser",   10000, 1  ),
     ("weapon_grenade_launcher", "Grenade Launcher",  7500,  12 ),
     ("weapon_rocket_launcher",  "Rocket Launcher",   5000,  5  ),
@@ -78,7 +78,7 @@ WeaponList = [
 
 # Weapon Bonuses
 WeaponBonus = [
-    # Class Name, Bonus
+   # Class Name                 Bonus
     
     ("weapon_slappers",         100),
     ("weapon_knife",            100),
@@ -94,7 +94,7 @@ WeaponBonus = [
 
 # Ammo Amounts
 Ammo = [
-    # Ammo Name, Nice Name, Price, Amount
+   # Ammo Name        Nice Name          Price Amount
     
     ("throwingknife", "Throwing Knives", 100,  10 ),
     ("9mm",           "9mm Ammo",        100,  100),
@@ -171,6 +171,7 @@ class RPG(DeathMatch):
     
     def __init__(self):
         super(RPG, self).__init__()
+        
         for i in range(0, MAX_PLAYERS):
             Level.append(0)
             XP.append(0)
@@ -332,7 +333,7 @@ class RPG(DeathMatch):
     def OnPlayerSpawn(self, player):
         id = player.GetPlayerID()
         
-        # Give XP to new players bring them up to speed with the current match
+        # Give XP to new players to bring them up to speed with the current match
         if player.IsInitialSpawn():
             xp = 0
             for i in range(0, len(XP)):
@@ -526,12 +527,12 @@ class RPG(DeathMatch):
             if lootnum == 0 and not LootTokenActive:
                 GEUtil.ClientPrint(None, GEGlobal.HUD_PRINTTALK, "^iA Loot Briefcase has appeared!")
                 GEUtil.PlaySoundTo(None, "GEGamePlay.Token_Drop_Friend", True)
-                GEMPGameRules.GetTokenMgr().SetupToken(LootToken, limit = 1, respawn_delay=60.0,
+                GEMPGameRules.GetTokenMgr().SetupToken(LootToken, limit = 1, respawn_delay = 60.0,
                                     location = GEGlobal.SPAWN_WEAPON | GEGlobal.SPAWN_SPECIALONLY,
                                     glow_color = COLOR_MONEY, glow_dist = 3500,
-                                    world_model="models/weapons/tokens/w_briefcasetoken.mdl",
-                                    view_model="models/weapons/tokens/v_briefcasetoken.mdl",
-                                    print_name="Loot Briefcase")
+                                    world_model = "models/weapons/tokens/w_briefcasetoken.mdl",
+                                    view_model = "models/weapons/tokens/v_briefcasetoken.mdl",
+                                    print_name = "Loot Briefcase")
                 LootTokenActive = True
             
             # Loot Briefcase Handling
